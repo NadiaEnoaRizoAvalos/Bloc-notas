@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <title>Bloc · Tus ideas, a mano</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Bloc, inicio"><span aria-hidden="true">▤</span> bloc<span class="brand-dot">.</span></a><span class="tagline">Un lugar para tus ideas</span></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">TU ESPACIO PERSONAL</p><h1 id="page-title">Una idea merece<br>su propio lugar<span>.</span></h1><p>Capturá lo que pensás. Volvé cuando quieras.</p></section>
+    <div class="workspace">
+      <section class="editor panel" aria-labelledby="editor-title">
+        <div class="section-heading"><h2 id="editor-title">Nueva nota</h2><span aria-hidden="true">↗</span></div>
+        <form id="note-form">
+          <label for="title">Título</label><input id="title" name="title" maxlength="120" placeholder="Dale un nombre a tu idea" required>
+          <label for="content">Tu nota</label><textarea id="content" name="content" rows="9" maxlength="20000" placeholder="Todo empieza con unas palabras…" required></textarea>
+          <p class="hint">Se guarda en este navegador, en este dispositivo.</p>
+          <div class="actions"><button type="submit" id="save">Guardar nota <span aria-hidden="true">＋</span></button><button class="secondary" id="cancel" type="button" hidden>Cancelar edición</button></div>
+        </form>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+      <section class="collection" aria-labelledby="notes-title"><div class="section-heading"><h2 id="notes-title">Mis notas <span id="count">0</span></h2><span class="small-label">HECHAS POR VOS</span></div><div id="notes"></div><div id="empty" class="empty"><span aria-hidden="true">✎</span><h3>Tu próxima idea vive acá</h3><p>Creá tu primera nota.<br>Nosotros le guardamos un lugar.</p></div></section>
+    </div>
+  </main>
+  <footer>Un poco de orden. Mucho espacio para imaginar.</footer>
+</body>
+</html>
