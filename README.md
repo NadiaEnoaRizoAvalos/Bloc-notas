@@ -17,3 +17,5 @@ Si el almacenamiento está lleno o bloqueado, la app conserva el borrador y mues
 Con Node.js 20 o posterior: `npm test` (o `node --test`).
 
 Comprobación manual: crear dos notas, recargar, editar una y recargar de nuevo; comprobar navegación por teclado y diseño a 375 px y 1280 px. Para simular un fallo de guardado en la consola del navegador: `Storage.prototype.setItem = () => { throw new DOMException('Cuota agotada', 'QuotaExceededError'); }`. Intentar guardar: el borrador debe seguir visible, debe aparecer el error y la lista no debe cambiar. Recargar restaura el método original.
+
+Si otra pestaña guardó cambios desde que abriste la página, el guardado se bloquea y el borrador se conserva. Copialo y recargá para obtener las notas actuales. Esta comprobación detecta pestañas desactualizadas; localStorage no ofrece transacciones para escrituras exactamente simultáneas.

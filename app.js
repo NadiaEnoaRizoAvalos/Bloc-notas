@@ -77,7 +77,11 @@ form.addEventListener('submit', event => {
   }
   try {
     notes = saveNote(storage, notes, { id: editingId, title: title.value, content: content.value });
-  } catch {
+  } catch (error) {
+    if (error.code === 'STORAGE_CONFLICT') {
+      announce('Las notas cambiaron en otra pestaña. Copiá tu borrador y recargá antes de volver a guardar para no sobrescribirlas.', true);
+      return;
+    }
     announce('No se pudo guardar la nota. Tu texto sigue acá: revisá el espacio y los permisos del navegador e intentá de nuevo.', true);
     return;
   }

@@ -62,3 +62,12 @@ test('preserves literal HTML text in storage', () => {
   saveNote(storage, [], { title: text, content: text });
   assert.equal(loadNotes(storage)[0].content, text);
 });
+
+test('does not overwrite a note saved from another tab', () => {
+  const storage = memoryStorage();
+  const tabA = loadNotes(storage);
+  const tabB = loadNotes(storage);
+  const saved = saveNote(storage, tabA, { title: 'Desde A', content: 'No perder' });
+  assert.throws(() => saveNote(storage, tabB, { title: 'Desde B', content: 'Borrador' }));
+  assert.deepEqual(loadNotes(storage), saved);
+});
